@@ -136,7 +136,7 @@ up with the general best response as:
 \]
 
 \[
-B_{ROW}(q) = \left\{
+B_{COL}(q) = \left\{
    \begin{array}{lr}
      1 & q > 1/3\\
      0 & q < 1/3\\
@@ -146,7 +146,7 @@ B_{ROW}(q) = \left\{
 \]
 Similarily for player 2:
 \[
-B_{COL}(p) = \left\{
+B_{ROW}(p) = \left\{
    \begin{array}{lr}
      1 & p > 2/3\\
      0 & p < 2/3\\
@@ -155,7 +155,7 @@ B_{COL}(p) = \left\{
  \right.
 \]
 The two pure NE occur when $(p,q) = (1,1)$ or $(p,q) = (0,0)$.  The mixed NE will occur
-at $(p,q) = (1/3,2/3)$.  At this location, both players are indeed indifferent.  They dont
+at $(p,q) = (2/3,1/3)$.  At this location, both players are indeed indifferent.  They dont
 care what they play, but once they do play a different strategy, the other player will want
 to change.
 
@@ -228,7 +228,7 @@ B_i(\omega) = \left\{
  \right.
 \]
 
-The pure equilibria are $(1,1)$ and $(0,0)$ and the mixed equilibrium is $(1/4,3/4)$.
+The pure equilibria are $(1,1)$ and $(0,0)$ and the mixed equilibrium is $(1/4,1/4)$.
 
 \newpage
 \textbf{2)} (a) Consider the following two player game.  Characterize the set of Nash equilibria,
@@ -254,17 +254,17 @@ in the last example.
   \underset{0\leq p\leq1}\max p(0\cdot q + 6\cdot(1-q)) + (1-p)(1\cdot q + 4\cdot(1-q))
 \]
 \[
-  6(1-q) < 1+4(1-q) \text{ when } q < 1/2
+  6(1-q) < q+4(1-q) \text{ when } q < 2/3
 \]
 \[
-  6(1-q) < 1+4(1-q) \text{ when } q > 1/2
+  6(1-q) < q+4(1-q) \text{ when } q > 2/3
 \]
 \[
 B_i(\omega) = \left\{
    \begin{array}{lr}
-     1 & \omega > 1/2\\
-     0 & \omega < 1/2\\
-     \text{[0,1]} & \omega = 1/2
+     1 & \omega > 2/3\\
+     0 & \omega < 2/3\\
+     \text{[0,1]} & \omega = 2/3
    \end{array}
  \right.
 \]
@@ -354,15 +354,16 @@ This provides the inequality:
 \[
   z_3 \geq 2z_4
 \]
-That means that a coarse correlated equilibria must satisfy the following requirements:
+We can repeat this same process for the other player.  When we do this we find that a coarse
+correlated equilibrium must satisfy the following requirements:
 \[
-  z_1+z_2+z_3+z_4 = 1 \text{, } 2z_2 \geq z_1 \text{, and } z_3 \geq 2z_4
+  z_1+z_2+z_3+z_4 = 1 \text{, } 2z_2 \geq z_1 \text{, } z_3 \geq 2z_4 \text{, } 2z_3 \geq z_1 \text{, and } z_2 \geq 2z_4
 \]
 Note that these requirements are a subset of the requirements for a regular correlated
 equilibrium.  Meaning that all regular correlated equilibrium and, by extension, all
-Nash equilibrium, are also coarse correlated equilibrium. Note, however, that there are
-correlated equilibria that is not a nash equilibria, and CCE that are not CE or NE.
-This is the relationship that I will try and derive in part (b).
+Nash equilibrium, are also coarse correlated equilibrium.  The question remains if all
+coarse correlated equilibria are also correlated equilibria.  This is the relationship
+that I will try and discover in part (b).
 
 (b) Derive the relationship between Nash equilibria, correlated equililbria, and course
 correlated quilibria and illustrate the results using a Venn diagram.  Prove all cases!
@@ -432,27 +433,30 @@ Diagram:
 \end{center}
 \end{figure}
 
-Now for an example, We will take the same Hawk Dove example, as seen below:
-\begin{center}
-  \begin{tabular}{r |c|c|}
-    \multicolumn{1}{r}{}
-    & \multicolumn{1}{c}{H}
-    & \multicolumn{1}{c}{D}\\
-    \cline{2-3}
-    H & 0,0 & 6,1\\
-    \cline{2-3}
-    D & 1,6 & 4,4\\
-    \cline{2-3}
-  \end{tabular}
-\end{center}
+Now for an example, we cant use the example listed above, as the CCE's are also CE's. So we will
+use the following payoff matrix:
 
-We know the Nash equilibria to be $\{0,1,0,0\}$, $\{0,0,1,0\}$, and $\{0,1/2,1/2,0\}$. A
-course correlated equilibria could, for example, be $\{0,0,3/4,1/4\}$.  This fits all of
-the criteria found in part (a), meaning no player would not play this game given all other
-players are in it.  This, however, could not be considered a CE since $z_2 \ngeq 2z_4$, and
-one or more of the players would disobey any referee trying to implement this strategy. A
-CE would look like $\{0,1/3,2/3,0\}$.  If players are told to play this, then they have no
-incentive to deviate, This is clearly not a NE, since we only have three known NE.
+%Now for an example, We will take the same Hawk Dove example, as seen below:
+%\begin{center}
+  %\begin{tabular}{r |c|c|}
+    %\multicolumn{1}{r}{}
+    %& \multicolumn{1}{c}{H}
+    %& \multicolumn{1}{c}{D}\\
+    %\cline{2-3}
+    %H & 0,0 & 6,1\\
+    %\cline{2-3}
+    %D & 1,6 & 4,4\\
+    %\cline{2-3}
+  %\end{tabular}
+%\end{center}
+
+%We know the Nash equilibria to be $\{0,1,0,0\}$, $\{0,0,1,0\}$, and $\{0,1/2,1/2,0\}$. A
+%course correlated equilibria could, for example, be $\{0,0,3/4,1/4\}$.  This fits all of
+%the criteria found in part (a), meaning no player would not play this game given all other
+%players are in it.  This, however, could not be considered a CE since $z_2 \ngeq 2z_4$, and
+%one or more of the players would disobey any referee trying to implement this strategy. A
+%CE would look like $\{0,1/3,2/3,0\}$.  If players are told to play this, then they have no
+%incentive to deviate, This is clearly not a NE, since we only have three known NE.
 
 
 \textbf{3)} A zero-sum game has a payoff (for the row player) given by
@@ -499,5 +503,7 @@ Since these are the same, we know that $(1/2,1/4)$ is a NE.
 
 
 (c) Verify results using your Matlab function for Ficticious Play.
+
+
 
 \end{document}

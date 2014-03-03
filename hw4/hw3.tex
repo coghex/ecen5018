@@ -103,6 +103,7 @@
 \begin{document}
 
 \answer{}
+I collaborated with Matthew Phillips on this assignment.
 
 \textbf{101.1)} Show that a subgame perfect equilibrium of an extensive game $\Gamma$ is also a
 subgame perfect equilibrium of the game obtained from $\Gamma$ by deleting a subgame not reached
@@ -110,21 +111,30 @@ in the equilibrium and assigning to the terminal history thus created the outcom
 in the deleted subgame.
 
 By deleting that subgame, you can represent its value as the terminal history of the equilibrium
-in that game, if that subgame is not reached by the $\Gamma$, then that subgame's equilibria is not
-preferable to the one found for the entire game $\Gamma$, if it was then it would be the new equilibria,
-since that is the definition of a subgame perfect equilibrium.  Recall that the subgame perfect
+in that subgame, if that subgame is not reached by the subgame perfect equilibria for $\Gamma$, then
+that subgame has no effect on the optimal history.  Recall that the subgame perfect
 equilibrium takes its definition from:
 \[
   O_h(s_{-i}^*|_h,s^*_i) \succsim_i|_h O_h(s_{-i}^*|_h,s_i)
 \]
-and that if there was a strategy that was preferable, it would be taken instead, and that would
-be the new SPE.
+and that if there was a strategy that was preferable, it would have been taken in the first place.
+This comes from the fact that at the point in time when you reach that subgame, your strategy has
+only changed for that small subset of points behind that subgame, and the optimal strategy would
+still give you the terminal history at the begining of the new subgame in $\Gamma'$.
 
 \textbf{101.2)} Let $s$ be a strategy profile in an extensive game with perfect information $\Gamma$;
 suppose that $P(h)=i$, $s_i(h)=a$, and $a'\in A(h)$ with $a'\neq a$. Consider the game $\Gamma'$
 obtained from $\Gamma$ by deleting all histories of the form $(h,a',h')$ for some sequence of actions
 $h'$ and let $s'$ be the strategy profile in $\Gamma'$ that is induced by $s$.  Show that if $s$ is
 a subgame perfect equilibrium of $\Gamma$ then $s'$ is a subgame perfect equilibrium of $\Gamma'$.
+
+Deleting all histories of the form $(h,a',h')$ will induce a strategy $s'$ that will contain actions
+at each point not included past $a'$.  This since $s(h) = a$ and $a\neq a'$ we know that none of those
+moves are going to be included in the new subgame perfect equilibrium.  Since the path $a'$ is not in
+not in the subgame perfect equilibrium, then we know that the new subgame perfect equilibrium will
+contain $s'(h)=a$.  In other words, there will be no difference at that point, since you would not
+want to take $a'$ in the first place.  This being the case, all other individual histories not contained
+in the subset $\Gamma'$ will be contained in the new SPE $s'$.
 
 \textbf{101.3)} Armies 1 and 2 are fighting over an island initially held by a battalion of army 2.
 Army 1 has $K$ battalions and army 2 has $L$.  Whenever the island is occupied by one army the opposing
@@ -232,11 +242,58 @@ This is a Bayesian game with two players, two actions, and many states. The stat
 of possible ticket values $(a_1,a_2)$.  The actions are exchange or dont exchange.  The signal is
 going to indicate each player's own prize size.  The belief function is going to be a function
 mapping the signal $a_i$ to the state $(a_1,a_2)$.  This is the probability of that state given
-the number on the player's own ticket.  Suppose player $i$ was going to exchange his ticket.
-If he wants to exchange it means that player $j$ must know that player $i$ thinks that he has a
-ticket value $a_i$ that is greater than $a_j$, so player $j$ has no reason to exchange.  The only
+the number on the player's own ticket.  We can work this problem out for any state, The only
 exception is when both players have $a = 1$, since no player has anything to lose in this situation,
-and will always exchange.
+they will always exchange.  We can split up each possibility that each player sees in the following
+payoff matricies (NE are in \textbf{bold}):
+\begin{center}
+  \begin{tabular}{r |c|c|}
+    \multicolumn{1}{r}{}
+    & \multicolumn{1}{c}{Stay}
+    & \multicolumn{1}{c}{Xchng}\\
+    \cline{2-3}
+    Stay & $\mathbf{a_1, a_2}$ & $\mathbf{a_1,a_2}$\\
+    \cline{2-3}
+    Xchng & $a_1$,$a_2$ & $a_2$,$a_1$\\
+    \cline{2-3}
+  \end{tabular}
+    \begin{tabular}{r |c|c|}
+    \multicolumn{1}{r}{}
+    & \multicolumn{1}{c}{Stay}
+    & \multicolumn{1}{c}{Xchng}\\
+    \cline{2-3}
+    Stay & $\mathbf{a_1,a_2}$ & $\mathbf{a_1,a_2}$\\
+    \cline{2-3}
+    Xchng & $\mathbf{a_1,a_2}$ & $\mathbf{a_2,a_1}$\\
+    \cline{2-3}
+  \end{tabular}
+  \begin{tabular}{r |c|c|}
+    \multicolumn{1}{r}{}
+    & \multicolumn{1}{c}{Stay}
+    & \multicolumn{1}{c}{Xchng}\\
+    \cline{2-3}
+    Stay & $\mathbf{a_1,a_2}$ & $\mathbf{a_1,a_2}$\\
+    \cline{2-3}
+    Xchng & $a_1$,$a_2$ & $a_2$,$a_1$\\
+    \cline{2-3}
+  \end{tabular}\\
+  \vspace{2mm}
+  \hspace{1.3cm}$a_1>a_2$\hspace{3.2cm}$a_1=a_2$\hspace{3.2cm}$a_1<a_2$
+\end{center}
+
+We can then analyse a player's payoffs (it works for both since they act symmetriclly).
+\[
+  E(\text{Exchanging}) = p_1\cdot {a_{2_1}} + p_2 \cdot {a_{1_2}} + p_3 \cdot a_{1_3}
+\]
+\[
+  E(\text{Staying}) = p_{1}\cdot a_{1_1} + p_2 \cdot a_{1_2} + p_3 \cdot a_{1_3}
+\]
+These were determined by assuming the best response of the other player.  Most of these
+values are the same, but $a_{2_1}<a_{1_1}$ which means that $E(\text{Exchanging})<E(\text{Staying})$,
+and thus each player would rather take the safe route, and not exchange their tickets.  In other
+words, each player is perfectly content switching their card if the other player has a higher value,
+but when you have the higher value, it is simply not worth the risk.
+
 
 \textbf{282.3)} (Adverse selection) Firm $A$ (the "acquirer") is considering taking over firm $T$ (the
 "target").  It does not know firm $T$'s value; it believes that this value, when firm $T$ is controlled
@@ -249,26 +306,38 @@ this situation as a Bayesian game in which firm $A$ chooses how much to offer an
 lowest offer to accept.  Find the Nash equilibrium (equilibria?) of this game.  Explain why the logic
 behind the equilibrium is called adverse selection.
 
-We can model this game as a Bayesian game.  The two players are $A$ and $T$.  The actions for $A$ are
-to make a bid $y$.  The actions for $T$ are deciding the possible values for which $T$ will accept the
-bid $y$. The states are the values of $x$, the value of the firm $T$.  $A$ will receive the same signal
+This can be modeled as a Bayesian game.  The two players are $A$ and $T$.  The actions for $A$ are to
+make a bid $y$.  The actions for $T$ are deciding the possible values for which $T$ will accept the bit
+$Y$.  The actions for $T$ are deciding the possible values for which $T$ will accept the bid $y$.  The
+states are the values of $x$, which are the values of the firm $T$.  $A$ will receive the same signal
 regardless of the state, $T$ will know the state that they are in.  The beliefs of $A$ are that each
-value $x$ is equally distributed between 0 and 100.  To find the Nash equilibria of this game we will
-first consider the case where $A$ bids a value $y$.  The values of $y$ for which firm $T$ will take the
-deal are the values for which $x<y$.  If $x$ is larger than $y$, then they will get a higher payoff by
-not taking the deal.
-
-$A$ is going to make some assumption about the type of $T$.  If $A$ bids some value $y$, then all of the
-possible values for the company $x$ will be between 0 and $y$.  Since they are distributed evenly between
-0 and $y$ (only the bids that are below $y$ count, since they are the only ones that dont provide a payoff
-of 0), $A$ expects $x$ to be of a value $\frac{y}{2}$.  From this we can calculate his expected payoff:
+value $x$ is equally distributed between 0 and 100.  To find the Nash equilibria we will consider the
+expected payoff of a bid $y$:
 \[
-  E(y) = \frac{3}{2}\frac{y}{2} - y = \frac{-y}{4}
+  U_A(y) = \frac{1}{101}\sum_{x=0}^{y} \frac{3}{2}x - y
 \]
-Which is less than 0.  So $A$'s best bet would be to offer 0.  And so the Nash equilibrium is to bid
-nothing.  This is called adverse selection since if $A$ were to bid say, 50 dollars, on average he would
-make 25 dollars.  Instead, $A$ selects something adverse to his payoff, because he tries to make
-assumptions on the state of $T$.
+Note that each payoff is going to include payoffs for every value of the company adjusted for the probability
+of getting that value.  We can see a few of these values below:
+\[
+  U_A(0) = \frac{1}{101}\sum_{x=0}^{0} \frac{3}{2}x - 0 = 0
+\]
+A negative value regardless of the bid, for 1:
+\[
+  U_A(1) = \frac{1}{101}\sum_{x=0}^{1} \frac{3}{2}x - 1 = \frac{-1}{202}
+\]
+\[
+  U_A(2) = \frac{1}{101}\sum_{x=0}^{2} \frac{3}{2}x - 2 = \frac{-3}{202}
+\]
+also negative.  in fact this sum can be represented as $\frac{-y(y+1)}{404}$, which is going to be less than
+0 for any value.  The only exception is a bid larger then 100:
+\[
+  U_A(y) = \frac{3}{2}(50) - y = 75 - \text{number greater than 100}
+\]
+Which is clearly negative.  The equilibrium is when firm A bids 0 for the company since it gives a payoff
+of zero, which is the only non negative payoff. This is called adverse selection since it would be common
+sense to think that firm A could bid 50 and have a fifty percent chance of getting something and a fifty
+percent chance of getting nothing.  Player A makes assumptions about the state of the world and then
+selects a value that is adverse to its goals.
 
 \textbf{307.1)} (Swing voter's curse) Whether candidtae 1 or candidate 2 is elected depends on the votes
 of two citizens.  The economy may be in one of two states, $A$ and $B$.  The citizens agree that candidate
@@ -321,20 +390,42 @@ to $A$ and 0.1 to $B$.  The payoffs can be seen in the following matricies:
 (b) Show that the game has exactly two pure Nash equilibria, in one of which citizen 2 does not
 vote and in the other of which she votes for 1.
 
-Citizen 1 will always vote for the candidate that best helps the economy.  For economy $A$ that is
-candidate 1 and for economy $B$ that is candidate 2.  Note that this is regardless of the state of
-the economy, it is always the better choice.  Citizen two is a different story, she believes
-that we are in $A$ with probability 0.9.  Her best response in economy $A$ is to either vote for
-candidate 1, or abstain.  In economy $B$, her best response is to vote for candidate 2, or abstain.
-So clearly abstaining is a nash equilibria.  I dont think that her always voting for candidate 1 is
-a Nash equilibrium, since she knows that in state $B$ she will be wrong.  Abstaining will always
-provide her with a better outcome than not abstaining.  If she abstains she gets a payoff of 1, if
-she votes for 1 she gets a payoff of $0.9\cdot1 + 0.1\cdot\frac{1}{2}$, which is clearly less than 1.
+Lets first look at the case where citizen 2 does not vote.  The best response in economy A would
+be to vote for candidate A, since that would provide a payoff of 1.  Similarily the best response
+in economy B would be to vote for candidate B, since that would also provide a payoff of 1.  This
+means that the proposed NE would take the form $((1,2),\emptyset)$.  Let's see if citizen 1 had an
+incentive to deviate.  If he votes for candidate 1 or 2 he will get a payoff of .95.  Not voting
+provides an expected payoff of 1, which is best, so citizen 2 has no motivation to deviate.  Lets
+check if the same phenomena occurs with citizen 1 when in economy A.  Voting for candidate 1 is
+clearly the better choice, providing 1, instead of 1/2 or 0.  In economy B, 2 is the clear choice,
+since the payoff would be 1, instead of 1/2 or 0.  In this way no player has any incentive to
+deviate from this profile, and a Nash equilibrium emmerges.
+
+Now lets look at the other equilibrium where player 2 always votes for candidate 1.  In this case
+player 2's best response will ve to vote for candidate 2 when in economy B, and 1 or $\emptyset$
+in economy A.  We can see that this proposes $((1,2),1)$ and $((\emptyset,2),1)$ as NE.  We can
+dismiss the first one since in this case, player 2 would have an incentive to abstain from voting,
+as that would increase the payoff from .95 to 1.  In the second case, deviating to voting for
+candidate 2 would provide a payoff of .1 and abstaining would provide a payoff of .5.  We know
+that citizen 2 has no incentive to deviate in this case.  In economy B citizen 1 clearly wants
+to chose 2, since 1/2 is larger than the 0 payoff for deviating.  In economy A he is indifferent
+to two different choices.  But he has no incentive to deviate, as he would be getting 1 by not
+voting.  Since no player has any incentive to deviate, we know that $((\emptyset,2),1)$ is a NE.
+
+The only thing left is to show that their isnt another NE.  The only other option would be for
+citizen 1 to vote for candidate 2 all of the time.  In this case citizen 2's new best respose
+would be to vote for candidate 1 while in economy A, and candidate 2 while in economy B.  He
+could also not vote in economy B.  In all of these cases, player 2 would then have an incentive
+to deviate to always voting for candidate 1, or abstaining, which would then put us in one of the
+situations above.  In this way our two Nash equilibria are $((\emptyset,2),1)$ and
+$((1,2),\emptyset)$.
 
 (c) Show that an action of one of the players in the second equilibrium is weakly dominated.
 
-Again, I dont think this game has a second pure Nash equilibrium, but if it did, then the utility
-of this equilibrium would be equal to the utility when playing the other equilibrium.
+In economy A player 1 will get a payoff of 1 if he abstains.  He will also get this payoff if he
+switches to voting for candidate 1.  In this way player 1's strategy of abstaining is weakly
+dominated by voting for candidate 1, since he is indifferent as to where he votes, but voting
+for candidate 1 would give him better payoffs if player 2 was to alter his strategy.
 
 (d) Why is "swing voter's curse" an appropriate name for the determinant of citizen 2's decision in
 the first equilibrium?

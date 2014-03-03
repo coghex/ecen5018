@@ -1,0 +1,347 @@
+\documentclass[12pt, notitlepage, final]{article} 
+
+\newcommand{\name}{Vince Coghlan}
+
+%\usepackage[dvips]{graphics,color}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{latexsym}
+\usepackage{enumerate}
+\usepackage{amsthm}
+%\usepackage{nccmath}
+\usepackage{setspace}
+\usepackage[pdftex]{graphicx}
+\usepackage{epstopdf}
+%\usepackage[siunitx]{circuitikz}
+\usepackage{tikz}
+\usepackage{float}
+%\usepackage{cancel} 
+\usepackage{setspace}
+%\usepackage{overpic}
+\usepackage{mathtools}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{qtree}
+%\usepackage{gensymb}
+
+\usetikzlibrary{calc}
+\usetikzlibrary{matrix}
+\usetikzlibrary{positioning}
+
+\numberwithin{equation}{section}
+\DeclareRobustCommand{\beginProtected}[1]{\begin{#1}}
+\DeclareRobustCommand{\endProtected}[1]{\end{#1}}
+\newcommand{\dbr}[1]{d_{\mbox{#1BR}}}
+\newtheorem{lemma}{Lemma}
+\newtheorem*{corollary}{Corollary}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\theoremstyle{definition}
+\newtheorem{define}{Definition}
+\newcommand{\column}[2]{
+\left( \begin{array}{ccc}
+#1 \\
+#2
+\end{array} \right)}
+
+\newdimen\digitwidth
+\settowidth\digitwidth{0}
+\def~{\hspace{\digitwidth}}
+
+\setlength{\parskip}{1pc}
+\setlength{\parindent}{0pt}
+\setlength{\topmargin}{-3pc}
+\setlength{\textheight}{9.0in}
+\setlength{\oddsidemargin}{0pc}
+\setlength{\evensidemargin}{0pc}
+\setlength{\textwidth}{6.5in}
+\newcommand{\answer}[1]{\newpage\noindent\framebox{\vbox{{\bf ECEN 5018 Spring 2014} 
+\hfill {\bf \name} \vspace{-1cm}
+\begin{center}{Homework \#3}\end{center} } }\bigskip }
+
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+%absolute value code
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}
+\makeatletter
+\let\oldabs\abs
+\def\abs{\@ifstar{\oldabs}{\oldabs*}}
+%
+\let\oldnorm\norm
+\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+\makeatother
+
+\def\dbar{{\mathchar'26\mkern-12mu d}}
+\def \Frac{\displaystyle\frac}
+\def \Sum{\displaystyle\sum}
+\def \Int{\displaystyle\int}
+\def \Prod{\displaystyle\prod}
+%\def \P[x]{\Frac{\partial}{\partial x}}
+%\def \D[x]{\Frac{d}{dx}}
+\newcommand{\PD}[2]{\frac{\partial#1}{\partial#2}}
+\newcommand{\PF}[1]{\frac{\partial}{\partial#1}}
+\newcommand{\DD}[2]{\frac{d#1}{d#2}}
+\newcommand{\DF}[1]{\frac{d}{d#1}}
+\newcommand{\fix}[2]{\left(#1\right)_#2}
+\newcommand{\ket}[1]{|#1\rangle}
+\newcommand{\bra}[1]{\langle#1|}
+\newcommand{\braket}[2]{\langle #1 | #2 \rangle}
+\newcommand{\bopk}[3]{\langle #1 | #2 | #3 \rangle}
+\newcommand{\Choose}[2]{\displaystyle {#1 \choose #2}}
+\newcommand{\proj}[1]{\ket{#1}\bra{#1}}
+\def\del{\vec{\nabla}}
+\newcommand{\avg}[1]{\langle#1\rangle}
+\newcommand{\piecewise}[4]{\left\{\beginProtected{array}{rl}#1&:#2\\#3&:#4\endProtected{array}\right.}
+\newcommand{\systeme}[2]{\left\{\beginProtected{array}{rl}#1\\#2\endProtected{array}\right.}
+\def \KE{K\!E}
+\def\Godel{G$\ddot{\mbox{o}}$del}
+
+\onehalfspacing
+
+\begin{document}
+
+\answer{}
+
+\textbf{101.1)} Show that a subgame perfect equilibrium of an extensive game $\Gamma$ is also a
+subgame perfect equilibrium of the game obtained from $\Gamma$ by deleting a subgame not reached
+in the equilibrium and assigning to the terminal history thus created the outcome of the equilibrium
+in the deleted subgame.
+
+By deleting that subgame, you can represent its value as the terminal history of the equilibrium
+in that game, if that subgame is not reached by the $\Gamma$, then that subgame's equilibria is not
+preferable to the one found for the entire game $\Gamma$, if it was then it would be the new equilibria,
+since that is the definition of a subgame perfect equilibrium.  Recall that the subgame perfect
+equilibrium takes its definition from:
+\[
+  O_h(s_{-i}^*|_h,s^*_i) \succsim_i|_h O_h(s_{-i}^*|_h,s_i)
+\]
+and that if there was a strategy that was preferable, it would be taken instead, and that would
+be the new SPE.
+
+\textbf{101.2)} Let $s$ be a strategy profile in an extensive game with perfect information $\Gamma$;
+suppose that $P(h)=i$, $s_i(h)=a$, and $a'\in A(h)$ with $a'\neq a$. Consider the game $\Gamma'$
+obtained from $\Gamma$ by deleting all histories of the form $(h,a',h')$ for some sequence of actions
+$h'$ and let $s'$ be the strategy profile in $\Gamma'$ that is induced by $s$.  Show that if $s$ is
+a subgame perfect equilibrium of $\Gamma$ then $s'$ is a subgame perfect equilibrium of $\Gamma'$.
+
+\textbf{101.3)} Armies 1 and 2 are fighting over an island initially held by a battalion of army 2.
+Army 1 has $K$ battalions and army 2 has $L$.  Whenever the island is occupied by one army the opposing
+army can launch an attack.  The outcome of the attack is that the occupying battalion and one of the
+attacking battalions are destroyed; the attacking army wins and, so long as it has battalions left,
+occupies the island with one battalion.  The commander of each army is interested in maximizing the
+number of surviving batallions but also regards the occupation of the island as worth more than one
+battalion but less than two. (If, after an attack, neither army has any battalions left, then the
+payoff of each commander is 0.) Analyse this situation as an extensive game and, using the notion of
+subgame perfect equilibrium, predict the winner as a function of K and L.
+
+We can see the first few moves of this game in the following tree:
+
+\Tree [.1 [.2 [.1 [.2 ... (0,1) ] (1,0) ] (0,1) ] (1,0) ]
+
+We will first examine the case where the armies are large, then we will examine the case where
+they are not.  Suppose army 1 attacked army 2, Both armies would have one less batallion and
+now army 1 would occupy the island.  Now the choice comes to player 2 whether or not to attack.
+If he does he will lose a second battalion, which he doesnt want to do.  This means he abstains,
+and player 1 wins the island.  So for $K\geq2$, the subgame perfect equilibrium
+will be the strategy $s_1 = (attack, abstain, abstain, ...)$ and $s_2 = abstain$. If $K = 1,0$, 
+then player 1 is going to abstain, because its better to not do anything than lose a battalion for
+nothing, this looks like $s_1 = abstain$ and $s_2 = abstain$.
+
+\textbf{282.1)} (Fighting an opponent of unknown strength) Two people are involved in a dispute.
+Person 1 does not know whether person 2 is strong or weak; she assigns probability $\alpha$ to
+person 2's being strong.  Person 2 is fully informed.  Each person can either fight or yield.
+Each person's preferences are represented by the expected value of a Bernoulli payoff function
+that assigns the payoff of 0 is she yields (regardless of the other person's action) and a payoff
+of 1 if she fights and her opponent yields; if both people fight, then their payoffs are (-1,1) if
+person 2 is strong and (1,-1) if person 2 is weak.  Formulate this situation as a Bayesian game
+and find its Nash equilibria if $\alpha < \frac{1}{2}$ and if $\alpha > \frac{1}{2}$.
+
+
+Incomplete information leads this problem to being represented as a Bayesian
+Game.  We have two players, two actions for each players, and a collection of possible realities.
+Either player 2 is strong, or player 2 is weak.  Either player can choose not to play, in which
+case their payoff is 0, or they can fight, giving 1 if they win, or -1 if they lose.  player 1
+will receive the same signal in each state, whereas player 2 will receive a different signal
+depending on the state.  Player 1 will assign a belief $\alpha$ to whether or not player 2
+is strong or weak.  The payoffs can be seen below:
+\begin{center}
+  \begin{tabular}{r |c|c|}
+    \multicolumn{1}{r}{}
+    & \multicolumn{1}{c}{Fight}
+    & \multicolumn{1}{c}{Yield}\\
+    \cline{2-3}
+    Fight & -1,1 & 1,0\\
+    \cline{2-3}
+    Yield & 0,1 & 0,0\\
+    \cline{2-3}
+  \end{tabular}
+  \begin{tabular}{r |c|c|}
+    \multicolumn{1}{r}{}
+    & \multicolumn{1}{c}{Fight}
+    & \multicolumn{1}{c}{Yield}\\
+    \cline{2-3}
+    Fight & 1,-1 & 1,0\\
+    \cline{2-3}
+    Yield & 0,1 & 0,0\\
+    \cline{2-3}
+  \end{tabular}\\
+  \vspace{2mm}
+  \hspace{1cm}P2 Strong\hspace{2.4cm}P2 Weak
+
+\end{center}
+
+
+Player 1's payoff for yielding is 0, and for fighting is:
+\[
+  \alpha(-1) + (1-\alpha)(1) = 1 - 2\alpha
+\]
+Note that if $\alpha$ is less than $\frac{1}{2}$ then then payoff is greater than 0, and player 1
+would prefer to fight, if $\alpha$ is greater than $\frac{1}{2}$ then the payoff will be less than
+0, which is less than the payoff for not playing.  So if $\alpha<\frac{1}{2}$ then player one would
+fight, and player 2 would choose the best response to player one fighting, which means player two
+would yield if he was weak and fight if he was strong.  The NE in this case is therefore
+\[
+  \text{Player 1: Fight}
+\]
+\[
+  \text{Player 2: (Fight, Yield)}
+\]
+If $\alpha>\frac{1}{2}$ than player 1 would yield, in which case, player two should always fight.
+This can be represented as:
+\[
+  \text{Player 1: Yield}
+\]
+\[
+  \text{Player 2: (Fight, Fight)}
+\]
+
+
+\textbf{282.2)} (An exchange game) Each of two individuals receives a ticket on which there is an
+integer from 1 to $m$ indicating the size of a prize she may receive.  The individuals' tickets are
+assigned randomly and independently; the probability of an individual's receiving each possible
+number is positive.  Each individual is given the option of exchanging her prize for the other
+individual's prize; the individuals are given this option simultaneously.  If both individuals wish
+to exchange, then the prizes are exchanged; otherwise each individual receives her own prize.  Each
+individual's objective is to maximize her expected monetary payoff.  Model this situation as a
+Bayesian game and show that in any Nash equilibrium the highest prize that either individual is
+willing to exchange is the smallest possible prize.
+
+This is a Bayesian game with two players, two actions, and many states. The states are the collection
+of possible ticket values $(a_1,a_2)$.  The actions are exchange or dont exchange.  The signal is
+going to indicate each player's own prize size.  The belief function is going to be a function
+mapping the signal $a_i$ to the state $(a_1,a_2)$.  This is the probability of that state given
+the number on the player's own ticket.  Suppose player $i$ was going to exchange his ticket.
+If he wants to exchange it means that player $j$ must know that player $i$ thinks that he has a
+ticket value $a_i$ that is greater than $a_j$, so player $j$ has no reason to exchange.  The only
+exception is when both players have $a = 1$, since no player has anything to lose in this situation,
+and will always exchange.
+
+\textbf{282.3)} (Adverse selection) Firm $A$ (the "acquirer") is considering taking over firm $T$ (the
+"target").  It does not know firm $T$'s value; it believes that this value, when firm $T$ is controlled
+by its own management, is at least \$0 and at most \$100, and assigns equal probability to each of the
+101 dollar values in this range.  Firm $T$ will be worth 50\% more under firm $A$'s management than it
+is under its own management.  Suppose that firm $A$ bids $y$ to take over firm $T$, and firm $T$ is
+worth $x$ (under its own management).  Then if $T$ accepts $A$'s offer, $A$'s payoff is $\frac{3}{2}x-y$
+and $T$'s payoff is $y$; if $T$ rejects $A$'s offer, $A$'s payoff is 0 and $T$'s payoff is $x$.  Model
+this situation as a Bayesian game in which firm $A$ chooses how much to offer and firm $T$ decides the
+lowest offer to accept.  Find the Nash equilibrium (equilibria?) of this game.  Explain why the logic
+behind the equilibrium is called adverse selection.
+
+We can model this game as a Bayesian game.  The two players are $A$ and $T$.  The actions for $A$ are
+to make a bid $y$.  The actions for $T$ are deciding the possible values for which $T$ will accept the
+bid $y$. The states are the values of $x$, the value of the firm $T$.  $A$ will receive the same signal
+regardless of the state, $T$ will know the state that they are in.  The beliefs of $A$ are that each
+value $x$ is equally distributed between 0 and 100.  To find the Nash equilibria of this game we will
+first consider the case where $A$ bids a value $y$.  The values of $y$ for which firm $T$ will take the
+deal are the values for which $x<y$.  If $x$ is larger than $y$, then they will get a higher payoff by
+not taking the deal.
+
+$A$ is going to make some assumption about the type of $T$.  If $A$ bids some value $y$, then all of the
+possible values for the company $x$ will be between 0 and $y$.  Since they are distributed evenly between
+0 and $y$ (only the bids that are below $y$ count, since they are the only ones that dont provide a payoff
+of 0), $A$ expects $x$ to be of a value $\frac{y}{2}$.  From this we can calculate his expected payoff:
+\[
+  E(y) = \frac{3}{2}\frac{y}{2} - y = \frac{-y}{4}
+\]
+Which is less than 0.  So $A$'s best bet would be to offer 0.  And so the Nash equilibrium is to bid
+nothing.  This is called adverse selection since if $A$ were to bid say, 50 dollars, on average he would
+make 25 dollars.  Instead, $A$ selects something adverse to his payoff, because he tries to make
+assumptions on the state of $T$.
+
+\textbf{307.1)} (Swing voter's curse) Whether candidtae 1 or candidate 2 is elected depends on the votes
+of two citizens.  The economy may be in one of two states, $A$ and $B$.  The citizens agree that candidate
+1 is best if the state is $A$ and candidate 2 is best if the state is $B$.  Each citizen's preferences are
+represented by the expected value of a Bernoulli payoff function that assigns a payoff of 1 if the best
+candidate for the state wins (obtains more votes than the other candidate), a payoff of 0 if the other
+candidate wins, and a payoff of $\frac{1}{2}$ if the candidates tie.  Citizen 1 is informed of the state,
+wheres citizen 2 believes it is $A$ with probability 0.9 and $B$ with probability 0.1.  Each citizen may
+either vote for candidate 1, vote for candidate 2, or not vote.
+
+(a) Formulate this situation as a Bayesian game.
+
+There are two players, 1 and 2.  Each player has 3 actions, vote for candidate 1, 2, or abstain.  The
+possible states are the states of the economy, $A$ or $B$.  Player 1 gets a signal for each state and
+assigns the probability of 1 to that state.  Player 2 gets no signal, and assigns a probability of 0.9
+to $A$ and 0.1 to $B$.  The payoffs can be seen in the following matricies:
+
+\begin{center}
+  \begin{tabular}{r |c|c|c|}
+    \multicolumn{1}{r}{}
+    & \multicolumn{1}{c}{Can1}
+    & \multicolumn{1}{c}{Can2}
+    & \multicolumn{1}{c}{Abstain}\\
+    \cline{2-4}
+    Can1 & 1 & 1/2 & 1\\
+    \cline{2-4}
+    Can2 & 1/2 & 0 & 0\\
+    \cline{2-4}
+    Abstain & 1 & 0 & $\frac{1}{2}$\\
+    \cline{2-4}
+  \end{tabular}
+    \begin{tabular}{r |c|c|c|}
+    \multicolumn{1}{r}{}
+    & \multicolumn{1}{c}{Can1}
+    & \multicolumn{1}{c}{Can2}
+    & \multicolumn{1}{c}{Abstain}\\
+    \cline{2-4}
+    Can1 & 0 & 1/2 & 0\\
+    \cline{2-4}
+    Can2 & 1/2 & 1 & 1\\
+    \cline{2-4}
+    Abstain & 0 & 1 & $\frac{1}{2}$\\
+    \cline{2-4}
+  \end{tabular}\\
+  \vspace{2mm}
+  \hspace{1.5cm}Economy A\hspace{4.3cm}Economy B
+
+\end{center}
+
+(b) Show that the game has exactly two pure Nash equilibria, in one of which citizen 2 does not
+vote and in the other of which she votes for 1.
+
+Citizen 1 will always vote for the candidate that best helps the economy.  For economy $A$ that is
+candidate 1 and for economy $B$ that is candidate 2.  Note that this is regardless of the state of
+the economy, it is always the better choice.  Citizen two is a different story, she believes
+that we are in $A$ with probability 0.9.  Her best response in economy $A$ is to either vote for
+candidate 1, or abstain.  In economy $B$, her best response is to vote for candidate 2, or abstain.
+So clearly abstaining is a nash equilibria.  I dont think that her always voting for candidate 1 is
+a Nash equilibrium, since she knows that in state $B$ she will be wrong.  Abstaining will always
+provide her with a better outcome than not abstaining.  If she abstains she gets a payoff of 1, if
+she votes for 1 she gets a payoff of $0.9\cdot1 + 0.1\cdot\frac{1}{2}$, which is clearly less than 1.
+
+(c) Show that an action of one of the players in the second equilibrium is weakly dominated.
+
+Again, I dont think this game has a second pure Nash equilibrium, but if it did, then the utility
+of this equilibrium would be equal to the utility when playing the other equilibrium.
+
+(d) Why is "swing voter's curse" an appropriate name for the determinant of citizen 2's decision in
+the first equilibrium?
+
+This is because player 2 knows that they do not have the full amount of information, and are
+abstaining, leaving the entire decision to someone else.  it falls to player 1 to make the
+decision, and it is a curse because only one person is making the decision, and if he makes
+it wrong he will get all the blame.
+
+\end{document}

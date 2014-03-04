@@ -110,17 +110,17 @@ subgame perfect equilibrium of the game obtained from $\Gamma$ by deleting a sub
 in the equilibrium and assigning to the terminal history thus created the outcome of the equilibrium
 in the deleted subgame.
 
-By deleting that subgame, you can represent its value as the terminal history of the equilibrium
-in that subgame, if that subgame is not reached by the subgame perfect equilibria for $\Gamma$, then
-that subgame has no effect on the optimal history.  Recall that the subgame perfect
-equilibrium takes its definition from:
-\[
-  O_h(s_{-i}^*|_h,s^*_i) \succsim_i|_h O_h(s_{-i}^*|_h,s_i)
-\]
-and that if there was a strategy that was preferable, it would have been taken in the first place.
-This comes from the fact that at the point in time when you reach that subgame, your strategy has
-only changed for that small subset of points behind that subgame, and the optimal strategy would
-still give you the terminal history at the begining of the new subgame in $\Gamma'$.
+To prove this we will begin recursively from the bottom of a extensive game.  At the last node of a
+game, there will exist a move $a_i$ for a player $P(h) = i$ that exists in the subgame perfect
+equilibrium set $s_i$.  This move will provide a payoff of some value and if it is not in the
+subgame perfect equilibrium of $\Gamma$ it means that at the previous history that would take you
+to the history $h$ can be replaced with the terminal history of $h$ given that move $a_i$.  In this
+way the subgame perfect equilibrium has not changed, except for the fact that it is no longer defined
+at the history $h$.  We can continue to delete nodes in this faction to attain a new tree.  If none
+of these histories were in to overall subgame perfect equilibrium, then our new subgame perfect
+equilibrium will be, by induction of the example we have shown, the exact same as before, with the
+deleted histories removed from $s_i$.
+
 
 \textbf{101.2)} Let $s$ be a strategy profile in an extensive game with perfect information $\Gamma$;
 suppose that $P(h)=i$, $s_i(h)=a$, and $a'\in A(h)$ with $a'\neq a$. Consider the game $\Gamma'$

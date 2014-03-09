@@ -9,16 +9,16 @@
 \usepackage{latexsym}
 \usepackage{enumerate}
 \usepackage{amsthm}
-%\usepackage{nccmath}
+\usepackage{nccmath}
 \usepackage{setspace}
 \usepackage[pdftex]{graphicx}
 \usepackage{epstopdf}
-%\usepackage[siunitx]{circuitikz}
+\usepackage[siunitx]{circuitikz}
 \usepackage{tikz}
 \usepackage{float}
-%\usepackage{cancel} 
+\usepackage{cancel} 
 \usepackage{setspace}
-%\usepackage{overpic}
+\usepackage{overpic}
 \usepackage{mathtools}
 \usepackage{listings}
 \usepackage{color}
@@ -243,4 +243,67 @@
   \item{Verify approaches in (d) and (e) result in the same answer.}\\
     Yes it is.
 \end{enumerate}
+
+
+\textbf{2)} Consider the following social choice problem with externalities:
+\begin{itemize}
+  \item{Three bidders $\{x,y,z\}$}
+  \item{Three possible allocations $\{X,Y,Z\}$ where $X$ indicates object givin $x$}
+  \item{Player specific valuations of allocations:}
+    \begin{center}
+      \begin{tabular}{c | c | c | c |}
+        \multicolumn{4}{c}{\hspace{4mm} $X$ \hspace{2.7mm} $Y$ \hspace{2.7mm} $Z$}\\
+        \cline{2-4}
+        $x$ & 30 & 0 & -15 \\
+        \cline{2-4}
+        $y$ & 10 & 40 & 0 \\
+        \cline{2-4}
+        $z$ & 0 & -10 & 50 \\
+        \cline{2-4}
+      \end{tabular}
+    \end{center}
+\end{itemize}
+\begin{enumerate}[(a)]
+  \item{Discuss the VCG mechanism for this problem.  What allocation is chosen? What prices are charged
+    to the players} \\
+    The VCG mechanism will make an attempt to make the action of reporting your true value, the dominant
+    strategy for any player.  We can see in this particular problem that $x$ would like to win the least,
+    but also would like $z$ to lose the most.  $y$ would like to win the second most, but also wants $x$
+    to win.  $z$ would like to win the most, but also wants $y$ to lose.  These externalities relate to
+    the real life externalities that make designing mechanisms for games so hard.  We will see that the
+    VCG mechanism will solve many of our problems.  Each player is going to have to pay a tax related
+    to the externalities.  We can find this like so ($\hat{v}$ is the reported value):
+    \[
+      t_i(\hat{v}) = \sum_{j\neq i}\hat{v}_j(x^*(\hat{v})) - \sum_{j\neq i}\hat{v}_j(x^*(\hat{v}_{-i}))
+    \]
+    for example:
+    \[
+      t_1 = 10 \; t_2 = -10 \; t_3 = -15
+    \]
+    Each bid by each player will be processed through this mechanism.  If we assume each player is to bid
+    his value of the item, we can see that the allocation would look like $\{40,30,35\}$ and $x$ would
+    win the object.
+  \item{Prove that the VCG mechanism is efficient for this problem.} \\
+    To prove that this is efficient we must prove two things, first that the game induces the players
+    to report truthfully, and second, to provide the utilitarian social choice.  We will start witht the
+    first one.  To prove that each player will report truthfully, we will follow closely the general proof
+    for this mechanism that is found in the lecture notes.  First, the utility for any player given that
+    he bids something $\hat{v}_i$ and that everyone else bids $\hat{v}_{-i}$(remember we want our
+    mechanism to provide a dominant strategy regardless of what other players do) is:
+    \[
+      v_i(x^*(\hat{v}_i,\hat{v}_{-i}))+t_i(\hat{v}_i,\hat{v}_{-i})
+    \]
+    We can substitute in for $t_i$:
+    \[
+      v_i(x^*(\hat{v}_i,\hat{v}_{-i})) + \sum_{j\neq i}\hat{v}_j(x^*(\hat{v}_i,\hat{v}_{-i})) - \sum_{j\neq i}\hat{v}_j(x^*(\hat{v}_{-i}))
+    \]
+    Since player $i$ cannot modify the last term if he is trying to best respond, we will just maximize
+    the first two terms:
+    \[
+      \underset{\hat{v}_i}{\text{arg}\max}\; v_i(x^*(\hat{v}_i,\hat{v}_{-i})) + \sum_{j\neq i}\hat{v}_j(x^*(\hat{v}_i,\hat{v}_{-i}))
+    \]
+    Player $x$ will want to choose an $x$ such that 
+
+\end{enumerate}
+
 \end{document}

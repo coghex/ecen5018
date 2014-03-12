@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.12.7)  9 MAR 2014 14:12
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.12.7)  12 MAR 2014 05:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1229,29 +1229,31 @@ Underfull \hbox (badness 10000) in paragraph at lines 123--128
 [1
 
 {/usr/local/texlive/2013basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./
-f1.png>] [2] [3] [4] (./hw5.aux) ) 
+f1.png>] [2] [3] [4] [5] [6] [7] [8] (./hw5.aux) ) 
 Here is how much of TeX's memory you used:
- 26074 strings out of 494536
- 574783 string characters out of 6167446
- 629334 words of memory out of 5000000
- 28854 multiletter control sequences out of 15000+600000
- 10322 words of font info for 42 fonts, out of 8000000 for 9000
+ 26078 strings out of 494536
+ 574828 string characters out of 6167446
+ 631333 words of memory out of 5000000
+ 28856 multiletter control sequences out of 15000+600000
+ 11028 words of font info for 44 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
  63i,7n,57p,432b,372s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2013basic/texmf-dist/font
-s/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2013basic/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2013basic/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2013basic/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2013basic/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2013bas
-ic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2013
-basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/20
-13basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texliv
-e/2013basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on hw5.pdf (4 pages, 114786 bytes).
+</usr/local/texlive/2013basic
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2013b
+asic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/local/texlive
+/2013basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/tex
+live/2013basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local
+/texlive/2013basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/lo
+cal/texlive/2013basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr
+/local/texlive/2013basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></u
+sr/local/texlive/2013basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
+></usr/local/texlive/2013basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.
+pfb></usr/local/texlive/2013basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmt
+i12.pfb>
+Output written on hw5.pdf (8 pages, 150590 bytes).
 PDF statistics:
- 59 PDF objects out of 1000 (max. 8388607)
- 41 compressed objects within 1 object stream
+ 77 PDF objects out of 1000 (max. 8388607)
+ 54 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  18 words of extra memory for PDF output out of 10000 (max. 10000000)
 

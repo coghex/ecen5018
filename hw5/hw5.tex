@@ -337,15 +337,30 @@ To begin I will consider the following game:
     & \multicolumn{1}{c}{C}
     & \multicolumn{1}{c}{R}\\
     \cline{2-4}
-    T & 1,-1 & -1,1 & 0,2\\
+    T & 2,1 & 1,2 & 0,0\\
     \cline{2-4}
-    B & -1,1 & 1,-1 & 0,0\\
+    B & 1,2 & 2,1 & 1,4\\
     \cline{2-4}
   \end{tabular}
 \end{center}
 
+Note that this satisfies the first qualification.  The cycle would look like:
+$\{T,L\} \rightarrow \{T,C\} \rightarrow \{B,C\} \rightarrow \{B,L\}$.  Note that
+this is for the better reply, not the best reply.  This cycle would not occur in
+a system where the best reply was chosen, and in fact, no game of this size would
+satisfy that.  Only a $3\times 3$ game would.  The second condition is clearly
+satisfied.  The third condition is as well.  Each player has different values for
+each action played by the other.  $\{B,R\}$ is also a unique pure Nash equilibrium.
+It can be seen that at this point both players would not want to deviate. The better
+reply graph would illustrate the cycle:
 
-\item{Is this possible when each player only has two moves?}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=8cm]{f2}
+\end{center}
+\end{figure}
+
+\item{Is this possible when each player only has two moves?}\\
   No, in order to have a cycle in your graph, you must have a cycle of at least 4.  This is due to two facts:
   since two players can not make a unilateral change, a cycle must be an even number.  It cannot be two since
   that would mean that one player moves, then changes his mind, and moves back, but the payoff by definition
@@ -426,7 +441,23 @@ To be a potential game these have to be equal, for example:
     \cline{2-4}
   \end{tabular}
 \end{center}
-Since there is a $\Phi$ for this game, it is a potential game.
+Since there is a $\Phi$ for this game, it is a potential game.  $\Phi$ would look
+like:
+\begin{center}
+  \begin{tabular}{r |c|c|c|}
+    \multicolumn{1}{r}{}
+    & \multicolumn{1}{c}{L}
+    & \multicolumn{1}{c}{C}
+    & \multicolumn{1}{c}{R}\\
+    \cline{2-4}
+    T & 0 & -3 & -1\\
+    \cline{2-4}
+    M & -1 & 0 & -2\\
+    \cline{2-4}
+    B & 0 & 1 & 5\\
+    \cline{2-4}
+  \end{tabular}
+\end{center}
 
 \textbf{5)} Consider the following two player game:
 \begin{center}
@@ -584,9 +615,31 @@ $a(0) = (a_1,a_2,a_3)$.
     \]
     This means that player 2 will have to maximize:
     \[
-      -0.25(qx+q-5)
+      0.25(5-qx-q)
     \]
-    which is maximized when $x>-1$ by $q=0$ and when $x<-1$ it is $q=1$.
+    which is maximized when $x>-1$ by $q=0$ and when $x<-1$ it is $q=1$. Similarily for
+    player 3:
+    \[
+      r(p(q(0) + (1-q(1)))+(1-p)(q(1) + (1-q(0)))) +
+    \]
+    \[
+      (1-r)(p(q(1) + (1-q(-1)))+(1-p)(q(x) + (1-q(1))))
+    \]
+    Player 3 will want to maximize:
+    \[
+      0.25(5+x-r-rx)
+    \]
+    which is maximized when $x>-1$ by $r=1$ and when $x<-1$ it is $r=0$.  The new ficticious
+    play best reply would be:
+    \begin{displaymath}
+   f(x) = \left\{
+     \begin{array}{lr}
+       (1,0,1) & x>-1\\
+       (0,1,0) & x<-1\\
+       ([0,1],[0,1],[0,1]) & x = -1
+     \end{array}
+   \right.
+\end{displaymath} 
 
   \item{Consider \textit{any} game with $n>2$ players and finite action sets $\mathcal{A}_i$.
     Suppose each player uses the fictitious play strategy.  Prove or disprove teh following statement:}
@@ -596,6 +649,25 @@ $a(0) = (a_1,a_2,a_3)$.
 \end{center}
 Does the presented three player game provide any insights?
 
+The presented three player game provides an important insight into how we want to approach
+this problem.  The Utility of the next move is going to be a very complicated expression.
+Instead of a utility based off of the empirical probabilities of one person, they are
+now based on multiple people.  For example, three players would make a payoff of:
+\[
+  U_i(a_i(t+1)) = \beta_c(\beta_bU_i(a_i(t)) + (1-\beta_b)U_i(b_i(t))) + (1-\beta_c)(\beta_bU_i(a_i(t)) + (1-\beta_b)U_i(b_i(t)))
+\]
+Note, however, that the proof is almost identical.  At any amount of players, the payoff
+will be proportional to the utility of the last turn, and if the utility of the last turn
+was a Nash equilibium, then we know that:
+\[
+  U_i(a_i(t)) > U_i(a_i'(t))
+\]
+and since they are proportional then,
+\[
+  U_i(a_i(t+1)) > U_i(a_i'(t+1))
+\]
+This is not supposed to be a vigourous mathematical proof since it was already done above
+for the last problem.
 
 \end{enumerate}
 

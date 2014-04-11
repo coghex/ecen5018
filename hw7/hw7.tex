@@ -130,7 +130,63 @@ following elements:
 wonderful life utility.
 
 \begin{enumerate}[(a)]
-  \item{What is the payoff matrix?}
+  \item{What is the payoff matrix?}\\
+    We can find the utility:
+    \[
+      U_i(a)=\sum_{r\in a_i}(W_r(\{a\}_r)-W_r(\{a\}_r\backslash \{i\}))
+    \]
+
+    For example, if player 1 goes to x, and players two and three are not there:
+    \[
+      U_1(x) = v_x\left[1-\prod_{j\in S}(1-p_1)\right] - 1 = v_xp_1 - 1
+    \]
+    If player 2 is there:
+    \[
+      U_1(x) = v_x\left[1-(1-p_2)(1-p_1)\right] - v_x\left[1-(1-p_2)\right]
+    \]
+    If player 2 and 3 are there:
+    \[
+      U_1(x) = v_x\left[1-(1-p_3)(1-p_2)(1-p_1)\right] - v_x\left[1-(1-p_2)(1-p_3)\right]
+    \]
+    Whereas at this specific point player 2 would see:
+    \[
+      U_2(x) = v_x\left[1-(1-p_3)(1-p_2)(1-p_1)\right] - v_x\left[1-(1-p_3)(1-p_1)\right]
+    \]
+    This is way too long to fit in a payoff matrix, so ill save writing down the payoff matrix
+    until part (c).
+
+  \item{Is the game a potential game? If so, what is the potential function?}\\
+    Yes it is a potential game, with a potential function W:
+    \[
+      \Phi = W_x(\{a\}_x) + W_y(\{a\}_y)
+    \]
+  \item{From this point on, i.e., all future questions in Part \#1, set $v_x=2$, $v_y=1$, $p_1=1$,
+    $p_2 = 1/2$, and $p_3 = 1/4$.  What is the payoff matrix for this specific setting?}\\
+    The payoff matrix:
+  \begin{center}
+  \begin{tabular}{r |c|c|}
+    \multicolumn{1}{r}{}
+    & \multicolumn{1}{c}{$x$}
+    & \multicolumn{1}{c}{$y$}\\
+    \cline{2-3}
+    $x$ & 3/4, 0, 0 & 3/2, -1/2, 0 \\
+    \cline{2-3}
+    $y$ & 0, 3/4, 1/4 & 0, 1/2, -3/2 \\
+    \cline{2-3}
+  \end{tabular}
+  \begin{tabular}{r |c|c|}
+    \multicolumn{1}{r}{}
+    & \multicolumn{1}{c}{$x$}
+    & \multicolumn{1}{c}{$y$}\\
+    \cline{2-3}
+    $x$ & 0, 1, -3/4 & 0, 3/8, 1/8 \\
+    \cline{2-3}
+    $y$ & 3/4, -1, 0 & 3/8, 0, 0 \\
+    \cline{2-3}
+  \end{tabular}\\
+  \vspace{2mm}
+  \hspace{6mm}$x$\hspace{5.4cm}$y$\\
+  \end{center}
 \end{enumerate}
 
 \end{document}

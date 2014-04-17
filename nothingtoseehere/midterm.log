@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  16 APR 2014 21:10
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  16 APR 2014 21:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1214,30 +1214,29 @@ Package pdftex.def Info: f2.png used on input line 168.
 <f3.png, id=25, 967.615pt x 490.83376pt>
 File: f3.png Graphic file (type png)
  <use f3.png>
-Package pdftex.def Info: f3.png used on input line 187.
+Package pdftex.def Info: f3.png used on input line 191.
 (pdftex.def)             Requested size: 398.33858pt x 202.0595pt.
 
 <f4.png, id=26, 965.6075pt x 485.815pt>
 File: f4.png Graphic file (type png)
  <use f4.png>
-Package pdftex.def Info: f4.png used on input line 195.
+Package pdftex.def Info: f4.png used on input line 199.
 (pdftex.def)             Requested size: 398.33858pt x 200.40857pt.
- [3 <./f3.png> <./f4.png>]
-[4]
-Underfull \hbox (badness 10000) in paragraph at lines 240--244
+ [3 <./f3.png>] [4 <./f4.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 247--251
 
  []
 
 [5] [6] [7] [8] [9] <f5.png, id=50, 796.9775pt x 837.1275pt>
 File: f5.png Graphic file (type png)
  <use f5.png>
-Package pdftex.def Info: f5.png used on input line 443.
+Package pdftex.def Info: f5.png used on input line 450.
 (pdftex.def)             Requested size: 398.33858pt x 418.40944pt.
 
 [10 <./f5.png>] <f6.png, id=54, 699.61375pt x 889.3225pt>
 File: f6.png Graphic file (type png)
  <use f6.png>
-Package pdftex.def Info: f6.png used on input line 450.
+Package pdftex.def Info: f6.png used on input line 457.
 (pdftex.def)             Requested size: 369.88582pt x 470.18523pt.
  [11 <./f6.png>] (./midterm.aux) ) 
 Here is how much of TeX's memory you used:
@@ -1261,7 +1260,7 @@ lic/amsfonts/cm/cmr6.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public
 sfonts/cm/cmsy10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/ams
 fonts/cm/cmsy6.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfo
 nts/cm/cmsy8.pfb>
-Output written on midterm.pdf (11 pages, 603032 bytes).
+Output written on midterm.pdf (11 pages, 603673 bytes).
 PDF statistics:
  97 PDF objects out of 1000 (max. 8388607)
  65 compressed objects within 1 object stream

@@ -172,6 +172,10 @@ which can accommodate constrained action sets.
   doing that is not just $\epsilon$, but $\epsilon^2$.  As $\tau\rightarrow0^+$ we can see the behavior approch one of
   these equilibrium and then stay there.  Which equilibrium depends entirely on where it starts.
 
+  The important thing to note is the difficulty of remaining at an equilibrium.  Suppose that we are at $a_1b_3$.  We
+  will find it difficult to move out of that space for sufficiently small $\epsilon$.  In fact, we can see that moving
+  from one NE to the other would require overcoming a resistance on the order of $\epsilon^1$.
+
   \item{Characterize the behavior of log-linear learning with Variation \#1 as $\tau\rightarrow 0^+$ for the
     above example.}\\
   In this strategy, players pick uniformly over their distrobutions which path they want to analyze, then calculate
@@ -197,7 +201,10 @@ which can accommodate constrained action sets.
   \end{figure}
 
   As you can see, there is a sort of inertia to variation \# 2.  This is because it takes into account the previous
-  move.  If you are anywhere on the board, you have a uniform probability (1/3 or 1/2) to stay there.
+  move.  If you are anywhere on the board, you have a uniform probability (1/3 or 1/2) to stay there.  The tendency
+  to remain at an equilibrium, however, is essentially the same, on the order of $\epsilon^1$.  Variation \#2 will
+  stay at an equilibrium a little longer however, since there is a uniform probability that a player will not do
+  anything once at a NE.
 
   All of this code can be seen at the end of the test.
 

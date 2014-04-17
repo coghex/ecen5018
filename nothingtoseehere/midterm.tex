@@ -169,20 +169,40 @@ which can accommodate constrained action sets.
   \end{center}
   \end{figure}
   These are the two equilibria of the system.  Note that one can move from one to the other, but the probability of
-  doing that is not just $\epsilon$, but $\epsilon^2$.  As $\tau\rightarrow0^+$ we can see the behavior approch one of
-  these equilibrium and then stay there.  Which equilibrium depends entirely on where it starts.
+  doing that is small, the probability of making a mistake, a probability of:
+  \[
+  P_1=\frac{e^{\frac{1}{\tau}0}}{e^{\frac{1}{\tau}10}+e^{\frac{1}{\tau}0}}\text{, }P_2=\frac{e^{\frac{1}{\tau}-10}}{e^{\frac{1}{\tau}-10}+e^{\frac{1}{\tau}10}}
+  \]
+  \[
+    \lim_{\tau\to 0^+} P = P_1+P_2 = \epsilon^1
+  \]
+  This is the probability of, on player 1's turn, making a mistake. At that point (after a mistake has been made),
+  $b_3$ would be played with almost
+  certainty as $\tau\rightarrow0^+$.  This is added to the probability that that mistake wasnt taken, and player 2
+  made a mistake.  At this point, player 1 will play the higher payoff at $a_1b_2$, then player 2 would move to the
+  other equilibrium. Similarily, if we are at $a_1b_3$,  then the probability of moving to the other equilibrium is:
+  \[
+    P_1=\frac{e^{\frac{1}{\tau}-10}}{e^{\frac{1}{\tau}9}+e^{\frac{1}{\tau}-10}}\text{, }P_2=\frac{e^{\frac{1}{\tau}0}}{e^{\frac{1}{\tau}0}+e^{\frac{1}{\tau}0}}\text{, }P_3=\frac{e^{\frac{1}{\tau}-10}}{e^{\frac{1}{\tau}0}+e^{\frac{1}{\tau}-10}}\text{, }P_4=\frac{e^{\frac{1}{\tau}0}}{e^{\frac{1}{\tau}0}+e^{\frac{1}{\tau}0}+e^{\frac{1}{\tau}9}}
+  \]
+  \[
+    \lim_{\tau\to 0^+} P = P_1+P_2\cdot P_3 + P_2\cdot P_4 = \epsilon^1+\epsilon^2
+  \]
+  It is twice as hard to leave $a_1b_3$ as it is to leave $a_2b_1$, even though it has a lower payoff.  This is because
+  the states in the middle trend towards $a_1b_3$.
 
-  The important thing to note is the difficulty of remaining at an equilibrium.  Suppose that we are at $a_1b_3$.  We
-  will find it difficult to move out of that space for sufficiently small $\epsilon$.  In fact, we can see that moving
-  from one NE to the other would require overcoming a resistance on the order of $\epsilon^1$.
+  The important thing to note is the difficulty of remaining at an equilibrium.  For sufficiently small epsilon,
+  only one mistake from either player will change the equilibrium from $a_2b_1$ to $a_1b_3$.  In order to go the
+  other way, we would need one mistake from player 1, or two mistakes in a row from player 2.  In this way, each
+  path to the other equilibrium has a lowest path or resistance of 1, but one path is much harder to go through.
 
   \item{Characterize the behavior of log-linear learning with Variation \#1 as $\tau\rightarrow 0^+$ for the
     above example.}\\
-  In this strategy, players pick uniformly over their distrobutions which path they want to analyze, then calculate
+  In this strategy, players pick uniformly over their possible actions which path they want to analyze, then calculate
   the log-linear strategy of that action versus the action they took last turn.  This strategy seems to play out
   exactly the same, quickly converging to one of the two NE.  In fact, if I run each algorithm thousands of times,
   both of them converge to $a_1b_3$ about 70\% of the time and $a_2b_1$ about 30\% of the time, where both games
-  are given completely random starting points.  Additionally, almost every time variation \#2 would take much less
+  are given completely random starting points.  This is what we would expect from our results in part (a).  one
+  equilibrium is twice as likely as the other.  Additionally, almost every time variation \#2 would take much less
   changes before it settled down.  For instance, a typical run of variation \#1 going from $\tau=100$ to $\tau=1$ would
   look like:
 
@@ -202,8 +222,8 @@ which can accommodate constrained action sets.
 
   As you can see, there is a sort of inertia to variation \# 2.  This is because it takes into account the previous
   move.  If you are anywhere on the board, you have a uniform probability (1/3 or 1/2) to stay there.  The tendency
-  to remain at an equilibrium, however, is essentially the same, on the order of $\epsilon^1$.  Variation \#2 will
-  stay at an equilibrium a little longer however, since there is a uniform probability that a player will not do
+  to remain at an equilibrium, however, is essentially on the same order.  Variation \#2 will
+  stay at an equilibrium a little longer since there is a uniform probability that a player will not do
   anything once at a NE.
 
   All of this code can be seen at the end of the test.
@@ -377,22 +397,38 @@ Bayesian game as follows:
     player 2 does not know that state, but believes that there is a $1/2$ probability that we
     are in any of these states.  We can find the payoffs for player 2 knowing this fact:
     \[
-      U_2(AA) = \frac{1}{2}3 + \frac{1}{2}1 = 2
+      U_2(\{A,A\},A) = \frac{1}{2}3 + \frac{1}{2}1 = 2
     \]
     \[
-      U_2(AB) = \frac{1}{2}0 + \frac{1}{2}2 = 1
+      U_2(\{A,A\},B) = \frac{1}{2}0 + \frac{1}{2}2 = 1
     \]
     \[
-      U_2(BA) = \frac{1}{2}2 + \frac{1}{2}0 = 1
+      U_2(\{B,B\},A) = \frac{1}{2}2 + \frac{1}{2}0 = 1
     \]
     \[
-      U_2(BB) = \frac{1}{2}1 + \frac{1}{2}4 = 2\frac{1}{2}
+      U_2(\{B,B\},B) = \frac{1}{2}1 + \frac{1}{2}4 = 2\frac{1}{2}
     \]
+    \[
+      U_2(\{A,B\},A) = \frac{1}{2}3 + \frac{1}{2}0 = 1\frac{1}{2}
+    \]
+    \[
+      U_2(\{A,B\},B) = \frac{1}{2}0 + \frac{1}{2}4 = 2
+    \]
+    \[
+      U_2(\{B,A\},A) = \frac{1}{2}2 + \frac{1}{2}1 = 1\frac{1}{2}
+    \]
+    \[
+      U_2(\{B,A\},B) = \frac{1}{2}1 + \frac{1}{2}2 = 1\frac{1}{2}
+    \]
+
     From this we can see the best responses for player 2:
     \[
-      B_2(A) = \left( \begin{array}{c} 1 \\ 0 \end{array}\right), \text{ and } B_2(B) = \left( \begin{array}{c} 0 \\ 1 \end{array}\right)
+      B_2(\{A,A\}) = \left( \begin{array}{c} 1 \\ 0 \end{array}\right), \text{ and } B_2(\{B,B\}) = \left( \begin{array}{c} 0 \\ 1 \end{array}\right)
     \]
-    Player 2 will always choose to see the same movie as player 1.
+    \[
+    B_2(\{A,B\}) = \left( \begin{array}{c} 0 \\ 1 \end{array}\right), \text{ and } B_2(\{B,A\}) = \left( \begin{array}{c} 0 \\ 1 \end{array}\right) \text{ or } \left( \begin{array}{c} 1 \\ 0 \end{array}\right)
+    \]
+    Given the option, player 2 would like to see the same movie as player 1, otherwise its best to see movie B.
 
   \item{Derive all Bayes-Nash equilibria (over pure strategies)}
     Player 1 know some information about what state he is in, but he still does not have all the information.
@@ -428,12 +464,12 @@ Bayesian game as follows:
       \item{\{(A,A),A\}: Player 2 is obviously happy, recieving a payoff of 2, player 1 also recieves
         a payoff of $(2\frac{1}{3},1\frac{2}{3})$ which is better than the alternatives of $\frac{2}{3}$
         and $1\frac{1}{3}$ respectively.}
-      \item{\{(A,A),B\}: Player 2 would rather play A.}
+      \item{\{(A,A),B\}: Player 2 would rather play A}
       \item{\{(A,B),A\}: Player 1 would rather play (A,A)}
       \item{\{(A,B),B\}: Player 1 would rather play (B,B)}
       \item{\{(B,A),A\}: Player 1 would rather play (A,A)}
       \item{\{(B,A),B\}: Player 1 would rather play (B,B)}
-      \item{\{(B,B),A\}: Player 2 would rather play B.}
+      \item{\{(B,B),A\}: Player 2 would rather play B}
       \item{\{(B,B),B\}: Player 2 is happy, getting his highest possible payoff.  Player 1 is getting
         $(2,3)$, Which is better than $1\frac{1}{3}$ and $\frac{2}{3}$.}
     \end{itemize}

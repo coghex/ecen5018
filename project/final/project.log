@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  21 APR 2014 11:21
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  29 APR 2014 12:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1131,18 +1131,18 @@ File: tikzlibrarypositioning.code.tex 2008/10/06 v2.10 (rcs-revision 1.7)
  (./project.aux)
 \openout1 = `project.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 102.
-LaTeX Font Info:    ... okay on input line 102.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 102.
-LaTeX Font Info:    ... okay on input line 102.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 102.
-LaTeX Font Info:    ... okay on input line 102.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 102.
-LaTeX Font Info:    ... okay on input line 102.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 102.
-LaTeX Font Info:    ... okay on input line 102.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 102.
-LaTeX Font Info:    ... okay on input line 102.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 90.
+LaTeX Font Info:    ... okay on input line 90.
 
 (/usr/local/texlive/2013/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -1169,40 +1169,75 @@ File: siunitx-abbreviations.cfg 2013/03/11 v2.5q siunitx: Abbreviated units
 )
 \c@lstlisting=\count280
 \c__siunitx_mathsf_int=\count281
-LaTeX Font Info:    Try loading font information for U+msa on input line 102.
+LaTeX Font Info:    Try loading font information for U+msa on input line 90.
  (/usr/local/texlive/2013/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 102.
+LaTeX Font Info:    Try loading font information for U+msb on input line 90.
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+lasy on input line 102.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 90.
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
 \c__siunitx_mathtt_int=\count282
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 98.
+
+(/usr/local/texlive/2013/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 98.
  [1
 
-{/usr/local/texlive/2013/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (./proj
-ect.aux) ) 
+{/usr/local/texlive/2013/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
+<f1.png, id=22, 310.15875pt x 311.1625pt>
+File: f1.png Graphic file (type png)
+ <use f1.png>
+Package pdftex.def Info: f1.png used on input line 180.
+(pdftex.def)             Requested size: 142.26378pt x 142.7234pt.
+
+<f2.png, id=23, 308.15125pt x 310.15875pt>
+File: f2.png Graphic file (type png)
+ <use f2.png>
+Package pdftex.def Info: f2.png used on input line 181.
+(pdftex.def)             Requested size: 142.26378pt x 143.19061pt.
+
+<f3.png, id=24, 1236.62pt x 669.50125pt>
+File: f3.png Graphic file (type png)
+ <use f3.png>
+Package pdftex.def Info: f3.png used on input line 189.
+(pdftex.def)             Requested size: 341.43306pt x 184.84384pt.
+ [3 <./f1.png> <./f2.png> <./f3.png>] [4] (./project.aux) ) 
 Here is how much of TeX's memory you used:
- 26072 strings out of 493315
- 572850 string characters out of 6137904
- 626307 words of memory out of 5000000
- 29056 multiletter control sequences out of 15000+600000
- 14648 words of font info for 62 fonts, out of 8000000 for 9000
+ 26123 strings out of 493315
+ 573519 string characters out of 6137904
+ 631268 words of memory out of 5000000
+ 29096 multiletter control sequences out of 15000+600000
+ 16820 words of font info for 71 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 63i,6n,57p,436b,223s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-r12.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr1
-7.pfb>
-Output written on project.pdf (1 page, 22499 bytes).
+ 63i,7n,57p,436b,273s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/
+2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2
+013/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/20
+13/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/201
+3/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2013/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2013/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2013/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2013/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2013/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2013/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2013/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2013/texmf-dist/font
+s/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2013/texmf-dist/fonts
+/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on project.pdf (4 pages, 431472 bytes).
 PDF statistics:
- 19 PDF objects out of 1000 (max. 8388607)
- 13 compressed objects within 1 object stream
+ 75 PDF objects out of 1000 (max. 8388607)
+ 52 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 13 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 28 words of extra memory for PDF output out of 10000 (max. 10000000)
 

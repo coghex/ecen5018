@@ -152,7 +152,7 @@ This tells us that we have twice the potential function, meaning our potential f
 \[
   \phi_{\text{row}}(a) = \frac{1}{2}\sum_{i\in N}u_{\text{row$_i$}}(a)
 \]
-This can be easily extended to rows and columns to find:
+This can be easily extended to squares and columns to find:
 \begin{equation} \label{potfun}
   \phi(a) = \frac{1}{2}\sum_{i\in N}u_i(a)
 \end{equation}
@@ -190,8 +190,86 @@ The potential can be seen
 \end{center}
 \end{figure}
 
-You can see that once the potential is 0, we are done, and the puzzle is solved.  We can see a different story for a
-different puzzle.
+You can see that once the potential is 0, we are done, and the puzzle is solved.  We can see a different story if
+we run from a different initial condition.
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=12cm]{f4}
+\end{center}
+\end{figure}
+
+When we start from a different initial condition, we get stuck in a puzzle configuration that is not bad, but not
+a solution to the puzzle.  There is sufficiently high resistance between this state and the actual solution state
+so that moving to the solution requires many iterations.  It took 500000+ iterations to solve, since we spend most
+of out time in the following puzzle configuration:
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=7cm]{f5}
+\end{center}
+\end{figure}
+
+Repeated numbers are highlighted in red.  You can see that this solution is close, with no more than one repitition
+for any numbers.  If any of these repeated players chose to change their configuration, than they would either
+maintain their payoff, or increase it.  This fact means that it is sufficiently difficult to leave this
+configuration, and requires many levels of $\epsilon$ to overcome.  It is clear from this that any learning method
+will not do.  We need a learning method that has some sort of kickout probability so that we can leave an
+innefficient Nash Equilibrium.  In the above case we are in equilibrium (or at least near it) and staying there
+wont solve the puzzle.  A learning algorithm like fictitious play or cournot adjustment process would remain at
+this equilibrium.  This is where the value of log linear learning lies, the potential graph shows that we are constantly
+in a state of finding a low potential solution, then leaving it to find another.  We can visualize what this would
+look like in the following figure
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=12cm]{p1}
+\end{center}
+\end{figure}
+
+Where the circles are states of the puzzle, each level of the picture is a level of potential.  There is only
+one solution, meaning that there is only one configuration with potential of zero.  The black arrows are paths
+of probability $1-\epsilon$ and the red arrows are paths of $\epsilon$.  In reality this graph extends to include
+all possible configurations, a number as large as $10^{81}$.  The resistance between the left nash equilibrium
+and the solution of the puzzle is 6 (note that any black arrow will have a red arrow going in the opposite
+direction).  The resistance from the far right equilibrium would be 3.  This is what makes finding a solution
+so difficult, and the reason why our learning algorithm needs a sort of ``kick-out'' probability that allows us
+to leave a state.  If we increase the temperature to a higher value, say 2, we will more easily leave these
+nodes, but the potential shows that we have too much chaos in the system
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=12cm]{f6}
+\end{center}
+\end{figure}
+
+This is not right, and wont find a solution in sufficient time.  You can see the potential arrive at values as low
+as two, maybe these were on the correct path, but the large temperature forced these to go away from this
+equilibrium.  A small temperature is no good either
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=12cm]{f7}
+\end{center}
+\end{figure}
+
+We get stuck at another equilibrium.  There are, in fact, a multitude of equilibria, only one of which has a
+potential of zero, the solution.  The probability epsilon becomes too small to solve this in a reasonable amount of
+time.  We can see that these wont be solved in a reasonable time, but we know that in any exact potential game,
+the only stochastically stable state is the potential minimizer~\cite{marden12}.  Games with multiple solutions
+provide more insight into the problem at hand.  take for example~\cite{herzberg07}
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=5cm]{f8}
+\includegraphics[width=5cm]{f9}
+\end{center}
+\end{figure}
+
+The empty squares could be filled in with $\{9,4,4,9\}$ or $\{4,9,9,4\}$.  It can be show that any square of
+the form $\{a,b,b,a\}$ in a puzzle can be reversed and another solution found~\cite{herzberg07}.  For
+any of these cases, it will take a probability of $\epsilon$ to 
+
 
 \newpage
 \begin{thebibliography}{9}
@@ -208,6 +286,13 @@ different puzzle.
   \emph{Recherches sur les principes math\'{e}matiques de la th\'{e}orie des richesses},
   Hachette,
   1838.
+
+  \bibitem{herzberg07}
+  A. Herzberg and M. Murty,
+  Sudoku Squares and Chromatic Polynomials.
+  \emph{Notices of the AMS}
+  June/July,
+  2007
 
   \bibitem{neyman97}
   A. Neyman,

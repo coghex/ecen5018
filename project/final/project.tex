@@ -212,10 +212,10 @@ of out time in the following puzzle configuration:
 
 Repeated numbers are highlighted in red.  You can see that this solution is close, with no more than one repitition
 for any numbers.  If any of these repeated players chose to change their configuration, than they would either
-maintain their payoff, or increase it.  This fact means that it is sufficiently difficult to leave this
+maintain their cost, or increase it.  This fact means that it is sufficiently difficult to leave this
 configuration, and requires many levels of $\epsilon$ to overcome.  It is clear from this that any learning method
 will not do.  We need a learning method that has some sort of kickout probability so that we can leave an
-innefficient Nash Equilibrium.  In the above case we are in equilibrium (or at least near it) and staying there
+innefficient Nash Equilibrium.  In the above case we are in equilibrium and staying there
 wont solve the puzzle.  A learning algorithm like fictitious play or cournot adjustment process would remain at
 this equilibrium.  This is where the value of log linear learning lies, the potential graph shows that we are constantly
 in a state of finding a low potential solution, then leaving it to find another.  We can visualize what this would
@@ -268,11 +268,68 @@ provide more insight into the problem at hand.  take for example~\cite{herzberg0
 
 The empty squares could be filled in with $\{9,4,4,9\}$ or $\{4,9,9,4\}$.  It can be show that any square of
 the form $\{a,b,b,a\}$ in a puzzle can be reversed and another solution found~\cite{herzberg07}.  For
-any of these cases, it will take a probability of $\epsilon$ to 
+any of these cases, it will take a probability of $\epsilon$ to move to any other configuration, for example
+$\{a, b, a, b\}$.  Once this change occurs, the probability of moving to one solution or the other becomes
+a 50/50 chance, making the probability of changing equilibria to be $\epsilon/2$.  For sufficiently large
+epsilon, it follows that the probability of landing in any particular solution in this situation would be
+0.5.
 
+What we need is a different algorithm that will prune the tree of posible states and possible equilibria.
+This algorithm will take the current one and preform three simple modifications:
+\begin{itemize}
+  \item{The player making his move we be chosen from all players at random every iteration}
+  \item{The player's possible actions will not include actions that are from initial set squares at
+    the beginning of the game. i.e., all game states that are, by definition, not solutions will be
+    eliminated from the possible future action profile of any player.}
+  \item{The value of the temperature will vary over time, and will reset after sufficient iterations}
+\end{itemize}
+
+We can show that each of these maintains a potential game.  We will start from the bottom.  As long as
+we keep our value of temperature "sufficiently large", then we will reach the same conclusion that we
+do for regular log-linear learning, that is that the set of potential maximizers are the only
+stochastically stable states.  This will force us out of a bad equilibrium if we are stuck there too long.
+Next, if the player does not get to play any action he want, i.e., any action that started out on the
+board to begin with, than the tree is trimmed of solutions we know dont exist.  Since the solution is not
+included in that set, but is the stationary distrobution, than the rules of a potential game still apply.
+If the player making the move has been chosed uniformly, than we can trust that we are still moving towards
+a stationary distrobution, since each player is still updating asynchronously~\cite{ferrer10}.  It matters
+not who updates in any given iteration, as long as someone does, and only one person does.  The solution
+to the first puzzle we looked at can be seen followed by the potential function after finding it.
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=5cm]{f1}
+\includegraphics[width=5cm]{f2}
+\end{center}
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=12cm]{f10}
+\end{center}
+\end{figure}
+
+Note that this is a very different graph.  In the previous graphs, we stay at around the same value, but never
+get close to 0, in this graph, we decrease steadily as the temperature drops.  Once we reach a Nash equilibrium,
+our temperature goes back to a chaotic value, and we try again.  This method finds a solution much faster and with
+much higher reliability.  This is because we dont get stuck at a location with high resistance to the solution,
+we instead move to a new state of the game that has a good chance of converging.
+
+Finding an equilibrium in a real life engineering setting is not always possible with log-linear learning.
+Sometimes we are forced to a nonoptimal equilibrium.  Constantly resetting the temperature allows us to
+find a solution reliably fast.  Many of the puzzles ran did not converge under regular log-linear learning
+in millions of iteration.  We know that it has to at some point, the math has proven that, but it is far more
+efficient to change the temperature as a function of time.
 
 \newpage
 \begin{thebibliography}{9}
+
+  \bibitem{ferrer10}
+  C. Alos-Ferrer and N. Netzer,
+  The logit-response dynamics.
+  \emph{Ganes and Economic Behavior},
+  68:413-427
+  2010.
 
   \bibitem{blume93}
   L. Blume,
